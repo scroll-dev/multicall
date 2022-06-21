@@ -1,4 +1,9 @@
 /out
 node_modules/
+
+# Hardhat/Foundry files
+cache
+cache-hardhat
 artifacts/
-cache/
+
+typechain/
