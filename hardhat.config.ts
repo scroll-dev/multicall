@@ -55,7 +55,8 @@ const config: HardhatUserConfig = {
       url: "http://localhost:8544"
     },
     l2geth: {
-      url: "http://localhost:8545"
+      url: "http://localhost:8545",
+      accounts: [PRIVATE_KEY],
     }
   },
   paths: {
