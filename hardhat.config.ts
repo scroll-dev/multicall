@@ -14,7 +14,13 @@ dotenv.config();
 
 // default values here to avoid failures when running hardhat
 const RINKEBY_RPC = process.env.RINKEBY_RPC || "1".repeat(32);
-const PRIVATE_KEY = process.env.PRIVATE_KEY || "1".repeat(64);
+const SCROLL_L1_RPC = process.env.SCROLL_L1_RPC || "1".repeat(32);
+const SCROLL_L2_RPC = process.env.SCROLL_L2_RPC || "1".repeat(32);
+
+const RINKEBY_PRIVATE_KEY = process.env.RINKEBY_PRIVATE_KEY || "1".repeat(64);
+const L1_DEPLOYER_PRIVATE_KEY = process.env.L1_DEPLOYER_PRIVATE_KEY || "1".repeat(64);
+const L2_DEPLOYER_PRIVATE_KEY = process.env.L2_DEPLOYER_PRIVATE_KEY || "1".repeat(64);
+
 const SOLC_DEFAULT = "0.8.10";
 
 // try use forge config
@@ -49,14 +55,15 @@ const config: HardhatUserConfig = {
   networks: {
     rinkeby: {
       url: RINKEBY_RPC,
-      accounts: [PRIVATE_KEY],
+      accounts: [RINKEBY_PRIVATE_KEY],
     },
     l1geth: {
-      url: "http://localhost:8544"
+      url: SCROLL_L1_RPC,
+      accounts: [L1_DEPLOYER_PRIVATE_KEY],
     },
     l2geth: {
-      url: "http://localhost:8545",
-      accounts: [PRIVATE_KEY],
+      url: SCROLL_L2_RPC,
+      accounts: [L2_DEPLOYER_PRIVATE_KEY],
     }
   },
   paths: {
