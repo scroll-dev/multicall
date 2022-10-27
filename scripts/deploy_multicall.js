@@ -13,7 +13,9 @@ async function main() {
   // manually to make sure everything is compiled
   await hre.run('compile');
 
-  const MulticallFactory = await ethers.getContractFactory("Multicall");
+  [deployer] = await ethers.getSigners();
+
+  const MulticallFactory = await ethers.getContractFactory("Multicall", deployer);
   Multicall = await MulticallFactory.deploy();
   await Multicall.deployed();
   console.log("Multicall deployed to:", Multicall.address);
