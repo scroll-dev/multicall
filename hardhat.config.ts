@@ -64,6 +64,8 @@ const config: HardhatUserConfig = {
     l2geth: {
       url: SCROLL_L2_RPC,
       accounts: [L2_DEPLOYER_PRIVATE_KEY],
+      gasPrice: 20000000000,
+      gasMultiplier: 1.1,
     }
   },
   paths: {
